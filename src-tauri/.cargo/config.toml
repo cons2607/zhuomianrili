@@ -1,0 +1,15 @@
+# 国内镜像：rsproxy.cn（cargo 拉包走这里，需 Git Bash 或任意终端均可生效）
+[source.crates-io]
+replace-with = 'rsproxy-sparse'
+
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+
+[registries.rsproxy]
+index = "https://rsproxy.cn/crates.io-index"
+
+[registries.rsproxy-sparse]
+index = "sparse+https://rsproxy.cn/index/"
+
+[net]
+git-fetch-with-cli = true

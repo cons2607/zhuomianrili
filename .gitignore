@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+src-tauri/target/
+
+# Build output
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Tauri
+src-tauri/target/debug/
+src-tauri/target/release/desktop-calendar.exe
+src-tauri/target/release/bundle/
+
+# Data (user-specific, should not be committed)
+src-tauri/target/debug/data/
+
+# Logs
+*.log
