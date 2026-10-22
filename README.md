@@ -2,6 +2,15 @@
 
 一款轻量级 Windows 桌面日历应用，支持活动管理、智能提醒、OCR 文字识别和主题换肤。
 
+## 快速开始
+
+**用户使用**：从 [Releases](https://github.com/cons2607/zhuomianrili/releases) 下载安装包 `桌面日历_x64-setup.exe`
+
+**开发者入口**：
+- 前端入口：[`src/main.js`](src/main.js) — Vue 应用启动
+- 后端入口：[`src-tauri/src/main.rs`](src-tauri/src/main.rs) — Tauri 应用启动
+- 核心逻辑：[`src-tauri/src/lib.rs`](src-tauri/src/lib.rs) — 模块注册与 IPC
+
 ## 功能特性
 
 - **日历视图**：月视图展示，快速查看活动安排
