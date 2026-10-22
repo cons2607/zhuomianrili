@@ -24,7 +24,7 @@
 
 ## 下载安装
 
-从 [Releases](https://github.com/yourusername/desktop-calendar/releases) 下载最新安装包 `桌面日历_x64-setup.exe`。
+从 [Releases](https://github.com/cons2607/zhuomianrili/releases) 下载最新安装包 `桌面日历_x64-setup.exe`。
 
 安装程序会将应用安装到 `%LOCALAPPDATA%\DesktopCalendar\`，无需管理员权限。
 
