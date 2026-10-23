@@ -19,6 +19,11 @@ const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
 
 const calMonthLabel = computed(() => `${calYear.value}年${calMonth.value + 1}月`);
 
+// 辅助函数：格式化日期为 YYYY-MM-DD，避免时区问题
+function formatDate(y, m, d) {
+  return `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+}
+
 const calWeeks = computed(() => {
   const y = calYear.value, m = calMonth.value;
   const firstDay = new Date(y, m, 1).getDay(); // 0=Sun
@@ -27,7 +32,7 @@ const calWeeks = computed(() => {
   // 前置空白
   for (let i = 0; i < firstDay; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) {
-    const dateStr = `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    const dateStr = formatDate(y, m + 1, d);
     cells.push({ day: d, date: dateStr });
   }
   // 后置空白补齐到整周
@@ -46,7 +51,7 @@ function eventsForDate(dateStr) {
 
 function isToday(dateStr) {
   const d = new Date();
-  const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const today = formatDate(d.getFullYear(), d.getMonth() + 1, d.getDate());
   return dateStr === today;
 }
 
@@ -66,7 +71,7 @@ function goToToday() {
   const d = new Date();
   calYear.value = d.getFullYear();
   calMonth.value = d.getMonth();
-  selectedDate.value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  selectedDate.value = formatDate(d.getFullYear(), d.getMonth() + 1, d.getDate());
 }
 
 function selectDay(cell) {

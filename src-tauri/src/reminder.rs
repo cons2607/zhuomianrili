@@ -234,10 +234,18 @@ fn created_after(ev: &Event, planned: NaiveDateTime) -> bool {
 }
 
 /// 待处理提醒条数：提醒过（弹过 / 补过）但仍未完成的事件 —— 决定托盘红点
+/// 对于重复事件，只要有任何一个实例被提醒过且事件未完成，就计数
 pub fn pending_count(data: &AppData) -> usize {
     data.events
         .iter()
-        .filter(|e| !e.completed && !e.remind_log.is_empty())
+        .filter(|e| {
+            // 已完成的事件不计
+            if e.completed {
+                return false;
+            }
+            // 有提醒记录的事件才计（说明至少有一个实例已触发提醒）
+            !e.remind_log.is_empty()
+        })
         .count()
 }
 
